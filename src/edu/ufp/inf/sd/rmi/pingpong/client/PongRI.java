@@ -1,9 +1,9 @@
-package edu.ufp.inf.sd.rmi.pingpong.server;
+package edu.ufp.inf.sd.rmi.pingpong.client;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 
-public interface PingpongRI extends Remote {
-    public String methodName() throws RemoteException;
+public interface PongRI extends Remote {
+    public void pong(Ball b) throws RemoteException;
 }
