@@ -3,6 +3,8 @@ package edu.ufp.inf.sd.rmi.diglib.client;
 import edu.ufp.inf.sd.rmi.diglib.server.DiglibRI;
 import edu.ufp.inf.sd.rmi.util.rmisetup.SetupContextRMI;
 import edu.ufp.inf.sd.rmi.diglib.server.DiglibSessionRI;
+import edu.ufp.inf.sd.rmi.diglib.server.DiglibFactoryRI;
+import edu.ufp.inf.sd.rmi.diglib.server.Book;
 
 import java.rmi.NotBoundException;
 import java.rmi.Remote;
@@ -15,7 +17,8 @@ public class  DiglibClient {
 
 
     private SetupContextRMI contextRMI;
-    private  DiglibRI myRI;
+
+    private DiglibFactoryRI myRI;
 
     public static void main(String[] args) {
         if (args != null && args.length < 2) {
@@ -43,7 +46,7 @@ public class  DiglibClient {
             Registry registry = contextRMI.getRegistry();
             if (registry != null) {
                 String serviceUrl = contextRMI.getServicesUrl(0);
-                myRI = (DiglibRI) registry.lookup(serviceUrl);
+                myRI = (DiglibFactoryRI) registry.lookup(serviceUrl);
             } else {
                 Logger.getLogger(this.getClass().getName()).log(Level.INFO, "registry not bound (check IPs). :(");
             }
@@ -55,7 +58,7 @@ public class  DiglibClient {
 
     private void playService() {
         try {
-            DiglibSessionRI sessionRI = this.diglibFactoryRI.login("guest","ufp");
+            DiglibSessionRI sessionRI = this.myRI.login("guest","ufp");
             if(sessionRI != null){
                 Book[] books = sessionRI.search("Distributed","Tanenbaum");
                 for (Book b : books){
