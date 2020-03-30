@@ -10,3 +10,5 @@ out/
 
 #DS_Store
 .DS_Store
+
+src/edu/ufp/inf/sd/rmi/visitor/Files/
