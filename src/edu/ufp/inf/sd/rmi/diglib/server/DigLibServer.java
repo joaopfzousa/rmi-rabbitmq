@@ -8,24 +8,23 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-public class DiglibServer {
+public class DigLibServer {
 
 
     private SetupContextRMI contextRMI;
-
-    private DiglibFactoryRI myRI;
 
     public static void main(String[] args) {
         if (args != null && args.length < 3) {
             System.exit(-1);
         } else {
-            DiglibServer srv = new DiglibServer(args);
+            assert args != null;
+            DigLibServer srv = new DigLibServer(args);
             srv.rebindService();
         }
     }
 
 
-    public DiglibServer(String args[]) {
+    public DigLibServer(String[] args) {
         try {
             String registryIP   = args[0];
             String registryPort = args[1];
@@ -40,9 +39,10 @@ public class DiglibServer {
         try {
             Registry registry = contextRMI.getRegistry();
             if (registry != null) {
-                myRI = new DiglibFactoryImpl();
+                DBMockup db = new DBMockup();
+                DigLibLoginRI digLibLoginRI = new DigLibLoginImpl(db);
                 String serviceUrl = contextRMI.getServicesUrl(0);
-                registry.rebind(serviceUrl, myRI);
+                registry.rebind(serviceUrl, digLibLoginRI);
             } else {
                 Logger.getLogger(this.getClass().getName()).log(Level.INFO, "registry not bound (check IPs). :(");
             }

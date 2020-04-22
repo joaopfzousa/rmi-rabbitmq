@@ -29,7 +29,7 @@ public class DBMockup {
 
     /**
      * Registers a new user.
-     * 
+     *
      * @param u username
      * @param p passwd
      */
@@ -41,10 +41,10 @@ public class DBMockup {
 
     /**
      * Checks the credentials of an user.
-     * 
+     *
      * @param u username
      * @param p passwd
-     * @return
+     * @return boolean
      */
     public boolean exists(String u, String p) {
         for (User usr : this.users) {
@@ -58,7 +58,7 @@ public class DBMockup {
 
     /**
      * Inserts a new book into the DigLib.
-     * 
+     *
      * @param t title
      * @param a authors
      */
@@ -68,17 +68,17 @@ public class DBMockup {
 
     /**
      * Looks up for books with given title and author keywords.
-     * 
+     *
      * @param t title keyword
      * @param a author keyword
-     * @return
+     * @return book instance
      */
     public Book[] select(String t, String a) {
         Book[] abooks = null;
         ArrayList<Book> vbooks = new ArrayList();
         // Find books that match
         for (int i = 0; i < books.size(); i++) {
-            Book book = (Book) books.get(i);
+            Book book = books.get(i);
             System.out.println("DB - select(): book[" + i + "] = " + book.getTitle() + ", " + book.getAuthor());
             if (book.getTitle().toLowerCase().contains(t.toLowerCase()) && book.getAuthor().toLowerCase().contains(a.toLowerCase())) {
                 System.out.println("DB - select(): add book[" + i + "] = " + book.getTitle() + ", " + book.getAuthor());
@@ -88,7 +88,7 @@ public class DBMockup {
         // Copy Vector->Array
         abooks = new Book[vbooks.size()];
         for (int i = 0; i < vbooks.size(); i++) {
-            abooks[i] = (Book) vbooks.get(i);
+            abooks[i] = vbooks.get(i);
         }
         return abooks;
     }
