@@ -59,23 +59,22 @@ public class DigLibClient {
 
             if (session != null) {
 
-                Book[] book = searchBooks(session, "Distributed Systems: principles and paradigms", "Tanenbaum");
+                Book[] book = searchBooks(session,"Distributed","Tanenbaum");
 
-                if(book != null)
+                if(book.length > 0)
                 {
                     for(Book books: book)
                     {
-                        System.out.println(books);
-
+                        System.out.println("books = " + books + "\n");
                     }
                 }else{
-                    System.out.println("Book not found");
+                    System.out.println("[session] - 1.Book not found\n");
                 }
 
 
                 Book[] b = searchBooks(session, "Teste", "Rui");
 
-                if(b != null)
+                if(b.length > 0)
                 {
                     for(Book books: b)
                     {
@@ -83,10 +82,10 @@ public class DigLibClient {
 
                     }
                 }else{
-                    System.out.println("Book not found");
+                    System.out.println("[session] - 2.Book not found\n");
                 }
             } else {
-                System.out.println("No Session, Error credentials");
+                System.out.println("[session] - No Session, Error credentials\n");
             }
 
             DigLibSessionRI error_session = login("gues", "uf");
@@ -95,21 +94,21 @@ public class DigLibClient {
 
                 Book[] book = searchBooks(error_session, "Distributed Systems: principles and paradigms", "Tanenbaum");
 
-                if(book != null)
+                System.out.println("book.length = " + book.length + "\n");
+
+                if(book.length > 0)
                 {
                     for(Book books: book)
                     {
-                        System.out.println(books);
-
+                        System.out.println("books = " + books + "\n");
                     }
                 }else{
-                    System.out.println("Book not found");
+                    System.out.println("[error_session] - 1.Book not found\n");
                 }
-
 
                 Book[] b = searchBooks(error_session, "Teste", "Rui");
 
-                if(b != null)
+                if(b.length > 0)
                 {
                     for(Book books: b)
                     {
@@ -117,10 +116,10 @@ public class DigLibClient {
 
                     }
                 }else{
-                    System.out.println("Book not found");
+                    System.out.println("[error_session] - 2.Book not found\n");
                 }
             } else {
-                System.out.println("No Session, Error credentials");
+                System.out.println("[error_session] - No Session, Error credentials\n");
             }
         } catch (RemoteException ex) {
             Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, null, ex);

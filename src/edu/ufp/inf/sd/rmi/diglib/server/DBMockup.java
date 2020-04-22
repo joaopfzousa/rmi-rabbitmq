@@ -44,7 +44,7 @@ public class DBMockup {
      *
      * @param u username
      * @param p passwd
-     * @return boolean
+     * @return
      */
     public boolean exists(String u, String p) {
         for (User usr : this.users) {
@@ -71,14 +71,14 @@ public class DBMockup {
      *
      * @param t title keyword
      * @param a author keyword
-     * @return book instance
+     * @return
      */
     public Book[] select(String t, String a) {
         Book[] abooks = null;
         ArrayList<Book> vbooks = new ArrayList();
         // Find books that match
         for (int i = 0; i < books.size(); i++) {
-            Book book = books.get(i);
+            Book book = (Book) books.get(i);
             System.out.println("DB - select(): book[" + i + "] = " + book.getTitle() + ", " + book.getAuthor());
             if (book.getTitle().toLowerCase().contains(t.toLowerCase()) && book.getAuthor().toLowerCase().contains(a.toLowerCase())) {
                 System.out.println("DB - select(): add book[" + i + "] = " + book.getTitle() + ", " + book.getAuthor());
@@ -88,7 +88,7 @@ public class DBMockup {
         // Copy Vector->Array
         abooks = new Book[vbooks.size()];
         for (int i = 0; i < vbooks.size(); i++) {
-            abooks[i] = vbooks.get(i);
+            abooks[i] = (Book) vbooks.get(i);
         }
         return abooks;
     }
