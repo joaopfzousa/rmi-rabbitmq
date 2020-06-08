@@ -16,6 +16,12 @@ public class DigLibLoginImpl extends UnicastRemoteObject implements DigLibLoginR
     }
 
     @Override
+    public boolean register(String username, String password) throws RemoteException {
+        boolean register = this.database.register(username, password);
+        return register;
+    }
+
+    @Override
     public DigLibSessionRI login(String username, String password) throws RemoteException {
         if (this.sessions.containsKey(username)) {
             return this.sessions.get(username);
@@ -28,6 +34,12 @@ public class DigLibLoginImpl extends UnicastRemoteObject implements DigLibLoginR
             return lib;
         }
 
+        return null;
+    }
+
+    @Override
+    public DigLibSessionRI logout(String username) throws RemoteException {
+        this.sessions.remove(username);
         return null;
     }
 }

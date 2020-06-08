@@ -1,19 +1,19 @@
 #!/usr/bin/env bash
 export SCRIPT_ROLE=$1
 
-export JDK=/Library/Java/JavaVirtualMachines/jdk-13.0.2.jdk/Contents/Home
+export JDK=/Library/Java/JavaVirtualMachines/jdk-14.0.1/Contents/Home
 export CURRENT_IDE=IntelliJ
 
 #@REM ==== JAVA NAMING STUFF ====
-export JAVAPROJ="/Users/joaosousa/IdeaProjects/SD"
-export JAVAPROJ_NAME=SD
+export JAVAPROJ="/Users/joaopfzousa/IdeaProjects/rmi-rabitmq"
+export JAVAPROJ_NAME=rmi-rabitmq
 
 
 export PACKAGE=chat
 export PACKAGE_PREFIX=edu.ufp.inf.sd.rmi
 export PACKAGE_PREFIX_FOLDERS=edu/ufp/inf/sd/rmi
 export SERVICE_NAME_ON_REGISTRY=ChatService
-export CLIENT_CLASS_PREFIX=Chat
+export CLIENT_CLASS_PREFIX=ObserverGui
 export SERVER_CLASS_PREFIX=Chat
 export CLIENT_CLASS_POSTFIX=Client
 export SERVER_CLASS_POSTFIX=Server

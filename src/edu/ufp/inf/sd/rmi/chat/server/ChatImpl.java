@@ -50,10 +50,4 @@ public class ChatImpl extends UnicastRemoteObject implements ChatRI {
             }
         }
     }
-
-    @Override
-    public String methodName() throws RemoteException {
-        System.out.println("Someone called me - methodName()!");
-        return "Response from methodName!";
-    }
 }

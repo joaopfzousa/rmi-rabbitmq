@@ -10,5 +10,4 @@ public interface ChatRI extends Remote {
     public void detach(ObserverRI obsRI) throws RemoteException;
     public State getState() throws RemoteException;
     public void setState(State state) throws RemoteException;
-    public String methodName() throws RemoteException;
 }
